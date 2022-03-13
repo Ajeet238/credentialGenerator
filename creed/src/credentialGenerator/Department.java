@@ -10,5 +10,5 @@ public class Department {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	
+
 }

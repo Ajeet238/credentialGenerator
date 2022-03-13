@@ -14,19 +14,15 @@ public class CredentialService {
 	}
 
 	Random ran = new Random();
-
-	String generate(String str, int size) {
-		String result;
-		int ran1 = 1 + ran.nextInt(size);
-		int ran2 = 1 + ran.nextInt(size);
-		if (ran1 > ran2) {
-			result = str.substring(ran2, ran1);
-		} else {
-			result = str.substring(ran1, ran2);
-		}
-		return result;
+	String selectTwoChar(String str, int size) {
+		int ran1 =  ran.nextInt(size);
+		int ran2 =  ran.nextInt(size);
+		char c1 =  str.charAt(ran1);
+		char c2 =  str.charAt(ran2);
+		String res = Character.toString(c1) + Character.toString(c2);
+		return res;
 	}
-
+ 
 	String generatePassword() {
 		String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String lower = "abcdefghijklmnopqrstuvwxyz";
@@ -34,21 +30,8 @@ public class CredentialService {
 		String charc = "@!#$_-&";
 		int charcSize = charc.length();
 
-		String password = generate(upper, 26) + generate(lower, 26) + generate(num, 10) + generate(charc, charcSize);
-
-// shuffling the password
-		char[] charArray = password.toCharArray();
-		List<Character> li = new ArrayList<Character>();
-		for (int i = 0; i < charArray.length; i++) {
-			li.add(charArray[i]);
-		}
-		Collections.shuffle(li);
-		String finalPassword = "";
-		for (int i = 0; i < li.size(); i++) {
-			finalPassword += li.get(i);
-		}
-		return finalPassword;
-
+		String password = selectTwoChar(upper, 26) + selectTwoChar(lower, 26) + selectTwoChar(num, 10) + selectTwoChar(charc, charcSize);
+		return password;
 	}
 
 	void showCredential(String fName, String lName, String dep) {

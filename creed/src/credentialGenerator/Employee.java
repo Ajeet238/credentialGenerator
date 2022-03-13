@@ -7,7 +7,7 @@ public class Employee {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-	}
+	} 
 
 	public Employee() {
 		super();
